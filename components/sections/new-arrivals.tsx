@@ -10,7 +10,7 @@ const newArrivals = [
     tag: "New",
     image:
       "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80&auto=format&fit=crop",
-    href: "/products/draped-linen-blazer",
+    href: "/products/1",
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const newArrivals = [
     tag: "New",
     image:
       "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&q=80&auto=format&fit=crop",
-    href: "/products/wide-leg-trousers",
+    href: "/products/2",
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const newArrivals = [
     tag: "Bestseller",
     image:
       "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80&auto=format&fit=crop",
-    href: "/products/oversized-merino-knit",
+    href: "/products/3",
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const newArrivals = [
     tag: "New",
     image:
       "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&q=80&auto=format&fit=crop",
-    href: "/products/silk-slip-dress",
+    href: "/products/4",
   },
 ];
 
