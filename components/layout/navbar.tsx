@@ -2,9 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ShoppingBag, User, Search, Menu, X } from "lucide-react";
+import { ShoppingBag, Search, Menu, X } from "lucide-react";
+import { UserButton, useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useCartTotals } from "@/lib/store/cart";
+import { SearchModal } from "@/components/search/search-modal";
 
 const navLinks = [
   { label: "Collections", href: "/collections" },
@@ -16,6 +19,9 @@ const navLinks = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const { isSignedIn } = useUser();
+  const { totalItems } = useCartTotals();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -28,9 +34,7 @@ export function Navbar() {
       <header
         className={cn(
           "fixed top-4 left-4 right-4 z-50 transition-all duration-300",
-          scrolled
-            ? "top-2"
-            : "top-4"
+          scrolled ? "top-2" : "top-4"
         )}
       >
         <nav
@@ -72,28 +76,46 @@ export function Navbar() {
             <Button
               variant="ghost"
               size="icon"
+              onClick={() => setSearchOpen(true)}
               className="cursor-pointer text-muted-foreground hover:text-foreground min-h-[44px] min-w-[44px]"
               aria-label="Search"
             >
               <Search className="w-5 h-5" />
             </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="cursor-pointer text-muted-foreground hover:text-foreground min-h-[44px] min-w-[44px]"
-              aria-label="Account"
-            >
-              <User className="w-5 h-5" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="cursor-pointer text-muted-foreground hover:text-foreground relative min-h-[44px] min-w-[44px]"
-              aria-label="Shopping bag, 0 items"
+
+            {isSignedIn ? (
+              <div className="min-h-[44px] min-w-[44px] flex items-center">
+                <UserButton
+                  afterSignOutUrl="/"
+                  appearance={{
+                    elements: {
+                      avatarBox: "w-8 h-8",
+                    },
+                  }}
+                />
+              </div>
+            ) : (
+              <Button
+                asChild
+                variant="ghost"
+                className="cursor-pointer text-muted-foreground hover:text-foreground font-sans text-sm font-medium tracking-wider uppercase min-h-[44px]"
+              >
+                <Link href="/sign-in">Sign In</Link>
+              </Button>
+            )}
+
+            <Link
+              href="/bag"
+              className="cursor-pointer text-muted-foreground hover:text-foreground relative min-h-[44px] min-w-[44px] flex items-center justify-center"
+              aria-label={`Shopping bag, ${totalItems} items`}
             >
               <ShoppingBag className="w-5 h-5" />
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary" aria-hidden="true" />
-            </Button>
+              {totalItems > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] flex items-center justify-center bg-primary text-primary-foreground text-[10px] font-semibold rounded-full px-1">
+                  {totalItems > 99 ? "99+" : totalItems}
+                </span>
+              )}
+            </Link>
 
             {/* Mobile hamburger */}
             <Button
@@ -127,10 +149,26 @@ export function Navbar() {
                   </Link>
                 </li>
               ))}
+              {!isSignedIn && (
+                <li>
+                  <Link
+                    href="/sign-in"
+                    className={cn(
+                      "font-sans text-base font-medium tracking-wider uppercase text-muted-foreground",
+                      "hover:text-foreground transition-colors duration-200 block py-1"
+                    )}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Sign In
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         )}
       </header>
+
+      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 }

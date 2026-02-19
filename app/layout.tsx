@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Geist } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 
-const altoDisplay = localFont({
-  src: "./fonts/alto-display.otf",
-  variable: "--font-alto",
+const ppMori = localFont({
+  src: "./fonts/PPMori-Regular.otf",
+  variable: "--font-pp-mori",
   display: "swap",
 });
 
@@ -26,10 +27,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${altoDisplay.variable} ${geist.variable} antialiased`}>
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={`${ppMori.variable} ${geist.variable} antialiased`}>
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
