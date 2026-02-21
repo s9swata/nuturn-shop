@@ -1,38 +1,35 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { products } from "@/components/collections/data";
 
 const collections = [
   {
-    title: "The Essential Edit",
-    subtitle: "Timeless pieces, refined cuts",
-    href: "/collections/essentials",
-    image:
-      "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=900&q=80&auto=format&fit=crop",
+    title: "Bridal Collection",
+    subtitle: "Exquisite lehengas for your special day",
+    href: "/products/4",
+    image: products[3]?.image || "/products/product4/1.png",
     span: "col-span-2",
   },
   {
-    title: "Midnight Series",
-    subtitle: "Dark palettes, bold statements",
-    href: "/collections/midnight",
-    image:
-      "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80&auto=format&fit=crop",
+    title: "Festive Edit",
+    subtitle: "Perfect for celebrations",
+    href: "/products/2",
+    image: products[1]?.image || "/products/product2/1.png",
     span: "col-span-1",
   },
   {
-    title: "Soft Volume",
-    subtitle: "Draped, relaxed, effortless",
-    href: "/collections/soft-volume",
-    image:
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80&auto=format&fit=crop",
+    title: "Casual Elegance",
+    subtitle: "Bohemian-inspired pieces",
+    href: "/products/3",
+    image: products[2]?.image || "/products/product3/1.png",
     span: "col-span-1",
   },
   {
-    title: "Structure",
-    subtitle: "Sharp lines, confident dressing",
-    href: "/collections/structure",
-    image:
-      "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=900&q=80&auto=format&fit=crop",
+    title: "Saree Collection",
+    subtitle: "Timeless drapes",
+    href: "/products/5",
+    image: products[4]?.image || "/products/product5/1.png",
     span: "col-span-2",
   },
 ];

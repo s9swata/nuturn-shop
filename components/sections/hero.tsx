@@ -2,15 +2,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { products } from "@/components/collections/data";
 
 export function Hero() {
+  const heroImage = products[0]?.image || "/products/product1/1.png";
   return (
     <section className="relative min-h-screen flex items-end overflow-hidden bg-foreground">
       {/* Full-bleed background image */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&q=80&auto=format&fit=crop"
-          alt="Nuturn editorial fashion hero"
+          src={heroImage}
+          alt="Nuturn ethnic wear collection"
           fill
           priority
           className="object-cover object-center"
@@ -25,7 +27,7 @@ export function Hero() {
         <div className="max-w-3xl">
           {/* Eyebrow */}
           <p className="font-sans text-xs font-semibold tracking-[0.3em] uppercase text-white/70 mb-6">
-            New Season — SS 2026
+            New Arrivals
           </p>
 
           {/* Headline */}
