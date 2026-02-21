@@ -1,35 +1,34 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { products } from "@/components/collections/data";
 
 const collections = [
   {
     title: "Bridal Collection",
     subtitle: "Exquisite lehengas for your special day",
-    href: "/products/4",
-    image: products[3]?.image || "/products/product4/1.png",
+    href: "/collections",
+    image: "/collections/1000080828.png",
     span: "col-span-2",
   },
   {
     title: "Festive Edit",
     subtitle: "Perfect for celebrations",
-    href: "/products/2",
-    image: products[1]?.image || "/products/product2/1.png",
+    href: "/collections",
+    image: "/collections/1000080829.png",
     span: "col-span-1",
   },
   {
     title: "Casual Elegance",
     subtitle: "Bohemian-inspired pieces",
-    href: "/products/3",
-    image: products[2]?.image || "/products/product3/1.png",
+    href: "/collections",
+    image: "/collections/1000080830.png",
     span: "col-span-1",
   },
   {
     title: "Saree Collection",
     subtitle: "Timeless drapes",
-    href: "/products/5",
-    image: products[4]?.image || "/products/product5/1.png",
+    href: "/collections",
+    image: "/collections/1000080831.png",
     span: "col-span-2",
   },
 ];

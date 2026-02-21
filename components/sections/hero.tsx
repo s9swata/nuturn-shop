@@ -2,10 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { products } from "@/components/collections/data";
 
 export function Hero() {
-  const heroImage = products[0]?.image || "/products/product1/1.png";
+  const heroImage = "/hero/hero_1.jpg";
   return (
     <section className="relative min-h-screen flex items-end overflow-hidden bg-foreground">
       {/* Full-bleed background image */}
@@ -70,7 +69,9 @@ export function Hero() {
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 right-8 hidden md:flex flex-col items-center gap-2 text-white/40">
-          <span className="font-sans text-[10px] tracking-[0.2em] uppercase rotate-90 origin-center">Scroll</span>
+          <span className="font-sans text-[10px] tracking-[0.2em] uppercase rotate-90 origin-center">
+            Scroll
+          </span>
           <div className="w-px h-12 bg-white/20" />
         </div>
       </div>
