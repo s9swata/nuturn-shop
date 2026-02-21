@@ -43,7 +43,7 @@ export function ProductCard({ product }: ProductCardProps) {
           {product.name}
         </h3>
         <p className="font-sans text-sm text-muted-foreground">
-          ${product.price}
+          ₹{product.price.toLocaleString("en-IN")}
         </p>
       </div>
     </Link>

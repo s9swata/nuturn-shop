@@ -65,7 +65,7 @@ export function ProductAccordion({ details = [] }: ProductAccordionProps) {
       id: "shipping",
       title: "Shipping & Returns",
       content:
-        "Free standard shipping on orders over $200. Express shipping available at checkout. Returns accepted within 30 days of purchase. Items must be unworn with original tags attached.",
+        "Free standard shipping on orders over ₹15,000. Express shipping available at checkout. Returns accepted within 30 days of purchase. Items must be unworn with original tags attached.",
     },
   ];
 

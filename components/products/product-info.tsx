@@ -31,7 +31,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
           {product.name}
         </h1>
         <p className="font-sans text-2xl font-medium text-foreground mt-4">
-          ${product.price}
+          ₹{product.price.toLocaleString("en-IN")}
         </p>
       </div>
 

@@ -34,7 +34,7 @@ export function SearchResultRow({ product, onClick }: SearchResultRowProps) {
         </p>
       </div>
       <p className="font-sans text-sm font-medium text-foreground flex-shrink-0">
-        ${product.price}
+        ₹{product.price.toLocaleString("en-IN")}
       </p>
     </Link>
   );

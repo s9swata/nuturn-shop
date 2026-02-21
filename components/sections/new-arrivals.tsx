@@ -1,47 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-
-const newArrivals = [
-  {
-    id: 1,
-    name: "Draped Linen Blazer",
-    price: "$298",
-    tag: "New",
-    image:
-      "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80&auto=format&fit=crop",
-    href: "/products/1",
-  },
-  {
-    id: 2,
-    name: "Wide-Leg Trousers",
-    price: "$195",
-    tag: "New",
-    image:
-      "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&q=80&auto=format&fit=crop",
-    href: "/products/2",
-  },
-  {
-    id: 3,
-    name: "Oversized Merino Knit",
-    price: "$245",
-    tag: "Bestseller",
-    image:
-      "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80&auto=format&fit=crop",
-    href: "/products/3",
-  },
-  {
-    id: 4,
-    name: "Silk Slip Dress",
-    price: "$320",
-    tag: "New",
-    image:
-      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&q=80&auto=format&fit=crop",
-    href: "/products/4",
-  },
-];
+import { products } from "@/components/collections/data";
 
 export function NewArrivals() {
+  const newArrivals = products.slice(0, 4);
   return (
     <section className="py-24 bg-muted/30">
       <div className="max-w-7xl mx-auto px-6">
@@ -69,7 +32,7 @@ export function NewArrivals() {
           {newArrivals.map((product) => (
             <Link
               key={product.id}
-              href={product.href}
+              href={`/products/${product.id}`}
               className="group cursor-pointer"
             >
               {/* Image */}
@@ -82,17 +45,19 @@ export function NewArrivals() {
                   sizes="(max-width: 768px) 50vw, 25vw"
                 />
                 {/* Badge */}
-                <div className="absolute top-3 left-3">
-                  <span
-                    className={`font-sans text-[10px] font-semibold tracking-widest uppercase px-2.5 py-1 rounded-full ${
-                      product.tag === "Bestseller"
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-background/90 text-foreground"
-                    }`}
-                  >
-                    {product.tag}
-                  </span>
-                </div>
+                {product.tag && (
+                  <div className="absolute top-3 left-3">
+                    <span
+                      className={`font-sans text-[10px] font-semibold tracking-widest uppercase px-2.5 py-1 rounded-full ${
+                        product.tag === "bestseller"
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-background/90 text-foreground"
+                      }`}
+                    >
+                      {product.tag}
+                    </span>
+                  </div>
+                )}
                 {/* Quick add overlay */}
                 <div className="absolute inset-x-0 bottom-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                   <button className="w-full bg-foreground/90 backdrop-blur-sm text-background font-sans text-xs font-semibold tracking-wider uppercase py-3 rounded-lg cursor-pointer hover:bg-foreground transition-colors duration-200 min-h-[44px]">
@@ -107,7 +72,7 @@ export function NewArrivals() {
                   {product.name}
                 </h3>
                 <p className="font-sans text-sm text-muted-foreground">
-                  {product.price}
+                  ₹{product.price.toLocaleString("en-IN")}
                 </p>
               </div>
             </Link>

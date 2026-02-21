@@ -32,7 +32,7 @@ export function AddToBag({ price }: AddToBagProps) {
       ) : (
         <>
           <ShoppingBag className="w-4 h-4" />
-          <span>Add to Bag — ${price}</span>
+          <span>Add to Bag — ₹{price.toLocaleString("en-IN")}</span>
         </>
       )}
     </button>

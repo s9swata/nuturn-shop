@@ -81,7 +81,7 @@ export function CartItemRow({ item }: CartItemRowProps) {
             </button>
           </div>
           <p className="font-sans text-sm font-medium text-foreground">
-            ${item.price * item.quantity}
+            ₹{(item.price * item.quantity).toLocaleString("en-IN")}
           </p>
         </div>
       </div>

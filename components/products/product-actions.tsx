@@ -92,7 +92,7 @@ export function ProductActions({ product }: ProductActionsProps) {
         ) : (
           <>
             <ShoppingBag className="w-4 h-4" />
-            <span>Add to Bag — ${product.price}</span>
+            <span>Add to Bag — ₹{product.price.toLocaleString("en-IN")}</span>
           </>
         )}
       </button>
