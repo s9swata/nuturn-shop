@@ -7,19 +7,14 @@ const footerLinks = {
     { label: "New Arrivals", href: "/new-arrivals" },
     { label: "Collections", href: "/collections" },
     { label: "Sale", href: "/sale" },
-    { label: "Gift Cards", href: "/gift-cards" },
   ],
   Help: [
-    { label: "Shipping & Returns", href: "/shipping" },
-    { label: "Size Guide", href: "/size-guide" },
-    { label: "FAQ", href: "/faq" },
-    { label: "Contact Us", href: "/contact" },
+    { label: "Shipping & Returns", href: "/privacy-policy" },
+    { label: "FAQ", href: "/privacy-policy" },
+    { label: "Contact Us", href: "/about" },
   ],
   Company: [
     { label: "About Nuturn", href: "/about" },
-    { label: "Sustainability", href: "/sustainability" },
-    { label: "Careers", href: "/careers" },
-    { label: "Press", href: "/press" },
   ],
 };
 
@@ -107,7 +102,7 @@ export function Footer() {
           &copy; {new Date().getFullYear()} Nuturn. All rights reserved.
         </p>
         <div className="flex items-center gap-6">
-          {["Privacy Policy", "Terms of Service", "Cookies"].map((item) => (
+          {["Privacy Policy", "Terms of Service"].map((item) => (
             <Link
               key={item}
               href={`/${item.toLowerCase().replace(/ /g, "-")}`}
